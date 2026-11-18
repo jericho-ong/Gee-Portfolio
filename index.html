@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gee Ordoño | Operations and data</title>
+<meta name="description" content="Gee Ordoño is an executive assistant, transaction coordinator and data analyst. See work from commercial real estate operations and data analytics.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🗂️%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Gee Ordoño | Operations and data">
+<meta property="og:description" content="Executive assistant, transaction coordinator and data analyst. Work samples from commercial real estate operations and data analytics.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/images/gee.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDEFF0; --card:#FFFFFF; --ink:#10242A; --muted:#475A60; --line:#CBD3D6;
+  --ops:#D8412F; --ops-text:#B02E1D; --ops-tint:#F8DDD8;
+  --data:#1F8A7A; --data-text:#14665A;
+  --photo:#C3C2C7; --header:rgba(237,239,240,.92);
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Hanken Grotesk","Segoe UI",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1A1E; --card:#16272C; --ink:#E9EFF0; --muted:#A4B4B9; --line:#2A3D43;
+    --ops:#F2705F; --ops-text:#F58C7E; --ops-tint:#3A2420;
+    --data:#4CC2AE; --data-text:#5FD0BC; --header:rgba(14,26,30,.92);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1A1E; --card:#16272C; --ink:#E9EFF0; --muted:#A4B4B9; --line:#2A3D43;
+  --ops:#F2705F; --ops-text:#F58C7E; --ops-tint:#3A2420;
+  --data:#4CC2AE; --data-text:#5FD0BC; --header:rgba(14,26,30,.92);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--header);z-index:30}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--data);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:800}
+h3{font-size:1.5rem;font-weight:700}
+p{margin:0}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--header);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:16px}
+.brand{font:800 1.2rem var(--display);text-decoration:none;letter-spacing:-.01em}
+.top nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.top nav a{text-decoration:none;font-weight:500;padding:8px 12px;border-radius:999px;font-size:.98rem}
+.top nav a:hover{background:var(--line)}
+
+/* hero */
+.hero{padding:clamp(40px,7vw,88px) 0 clamp(32px,5vw,56px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(28px,6vw,80px);align-items:center}
+.hero h1{font-size:clamp(2.7rem,6.4vw,5.4rem);font-weight:800;letter-spacing:-.035em;line-height:1.02;max-width:18ch;text-wrap:balance}
+.hero .lede{margin-top:26px;max-width:56ch;font-size:1.18rem;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--ink);background:var(--ink);color:var(--paper)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+.portrait{margin:0;background:var(--photo);border-radius:30px;overflow:hidden;aspect-ratio:914/1000;max-width:440px;justify-self:end;width:100%}
+.portrait img{width:100%;height:100%;object-fit:cover}
+
+/* day strip */
+.day-wrap{padding-bottom:clamp(48px,7vw,88px)}
+.day-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:14px}
+.day-head h2{font-size:1.25rem;font-weight:700}
+.day-head p{color:var(--muted);font-size:.96rem}
+.day-head a{font-weight:600;color:var(--ops-text)}
+.day{list-style:none;margin:0;padding:0;display:flex;gap:6px;align-items:stretch}
+.blk{flex:var(--span) 1 0;min-width:0;display:flex;flex-direction:column;gap:6px;padding:12px 12px 14px;border-radius:12px;background:var(--ops-tint);border-left:5px solid var(--ops);min-height:112px}
+.blk .t{font-weight:600;font-size:.86rem;color:var(--ops-text);font-variant-numeric:tabular-nums}
+.blk .n{font:600 .98rem/1.25 var(--display);letter-spacing:-.005em}
+.blk.huddle{background:var(--ink);color:var(--paper);border-left-color:var(--ink)}
+.blk.huddle .t{color:var(--paper);opacity:.8}
+.blk.rest{background:transparent;border:2px dashed var(--line);border-left:2px dashed var(--line)}
+.blk.rest .t{color:var(--muted)}
+.blk.rest .n{color:var(--muted);font-weight:500}
+@media (prefers-reduced-motion:no-preference){
+  .day .blk{opacity:0;transform:translateY(-14px)}
+  .day.ready .blk{opacity:1;transform:none;transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i)*90ms + 150ms)}
+}
+
+/* sections */
+section{padding:clamp(56px,8vw,104px) 0}
+.alt{background:var(--card);border-block:1px solid var(--line)}
+.sec-head{max-width:62ch;margin-bottom:40px}
+.sec-head p{margin-top:14px;color:var(--muted)}
+
+/* what I do */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,3vw,34px);border-top-width:6px}
+.alt .panel{background:var(--paper)}
+.panel.ops{border-top-color:var(--ops)}
+.panel.dat{border-top-color:var(--data)}
+.panel h3{margin-bottom:6px}
+.panel .sub{color:var(--muted);margin-bottom:18px}
+.panel ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.panel li{padding-left:22px;position:relative}
+.panel li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:10px;border-radius:3px}
+.panel.ops li::before{background:var(--ops)}
+.panel.dat li::before{background:var(--data)}
+.tools{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tools b{font-weight:600;margin-right:6px}
+.tools span{border:1px solid var(--line);background:var(--card);padding:5px 14px;border-radius:999px;font-size:.95rem}
+
+/* work */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.filters button{font:600 .98rem var(--body);min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.group{margin-top:64px}
+.group:first-of-type{margin-top:0}
+.ghead{border-left:6px solid var(--ops);padding-left:18px;margin-bottom:26px;max-width:66ch}
+.group[data-kind="data"] .ghead{border-left-color:var(--data)}
+.ghead p{margin-top:8px;color:var(--muted)}
+.group[hidden]{display:none}
+.shot{display:block;width:100%;padding:0;margin:0;border:0;background:var(--line);border-radius:12px;overflow:hidden;cursor:zoom-in;position:relative}
+.shot img{width:100%;height:100%;object-fit:cover}
+.shot:hover img{filter:brightness(1.04)}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px 22px}
+.dgrid .shot{aspect-ratio:2/1}
+.dgrid .shot img{object-position:top left}
+.docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px 20px}
+.docs .shot{aspect-ratio:1000/773;box-shadow:0 0 0 1px var(--line)}
+.doc{margin:0}
+.dgrid .doc .shot{box-shadow:0 0 0 1px var(--line)}
+figcaption{margin-top:10px;display:grid;gap:2px;font-size:.96rem}
+figcaption strong{font-weight:600}
+figcaption span{color:var(--muted)}
+.sheet{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.sheet .shot{aspect-ratio:1/1;border-radius:8px}
+.cals{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cals .shot{aspect-ratio:1000/570;background:#111}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,6vw,80px)}
+.about .body{display:grid;gap:18px;max-width:60ch}
+.about .body p{color:var(--ink)}
+.facts{margin:0;display:grid;gap:0}
+.facts div{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.facts div:last-child{border-bottom:1px solid var(--line)}
+.facts dt{font-weight:600;color:var(--muted)}
+.facts dd{margin:0}
+
+/* experience */
+.jobs{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.job{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 40px;padding:32px 0;border-top:1px solid var(--line)}
+.job:last-child{border-bottom:1px solid var(--line)}
+.job .when{font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.job h3{font-size:1.35rem}
+.job .org{color:var(--muted);margin-top:4px}
+.job ul{margin:16px 0 0;padding-left:1.2em;display:grid;gap:6px;max-width:64ch}
+.job.o .when{color:var(--ops-text)}
+.job.d .when{color:var(--data-text)}
+
+.recog{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:56px}
+.recog h3{font-size:1.15rem;margin-bottom:14px}
+.recog dl{margin:0;display:grid;gap:12px}
+.recog dt{font-weight:600}
+.recog dd{margin:0;color:var(--muted);font-size:.96rem}
+.recog a{text-underline-offset:3px}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper);border-radius:0}
+.contact h2{font-size:clamp(2.2rem,5vw,3.8rem);max-width:16ch}
+.contact p.lede{margin-top:18px;max-width:54ch;opacity:.85;font-size:1.15rem}
+.contact .row{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-top:32px}
+.contact .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.contact .meta{display:flex;flex-wrap:wrap;gap:6px 28px;opacity:.9}
+.contact .meta a{text-underline-offset:3px}
+footer{padding:28px 0 36px;color:var(--muted);font-size:.92rem}
+
+/* lightbox */
+dialog{border:0;padding:0;width:100%;height:100%;max-width:none;max-height:none;background:rgba(7,15,18,.96);color:#fff}
+dialog::backdrop{background:rgba(7,15,18,.96)}
+.lb{height:100%;display:grid;grid-template-rows:auto 1fr;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.lb-bar{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 20px}
+.lb-bar p{font-size:.98rem;max-width:70ch}
+.lb-bar .right{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.lb-bar .count{opacity:.7;font-variant-numeric:tabular-nums}
+.lb button{font:600 1rem var(--body);color:#fff;background:rgba(255,255,255,.12);border:0;border-radius:999px;min-height:44px;padding:0 18px;cursor:pointer}
+.lb button:hover{background:rgba(255,255,255,.22)}
+.lb-stage{display:grid;grid-template-columns:64px 1fr 64px;align-items:center;min-height:0;padding:0 8px 16px}
+.lb-stage img{max-width:100%;max-height:100%;margin:auto;object-fit:contain;min-height:0;border-radius:6px}
+.lb-stage .imgbox{display:flex;min-height:0;height:100%;justify-content:center}
+.lb-stage .imgbox img{height:auto;width:auto;max-height:calc(100dvh - 120px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}
+.lb-stage .nav{width:48px;height:48px;padding:0;font-size:1.6rem;justify-self:center}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .portrait{justify-self:start;max-width:340px;order:-1}
+  .hero h1{max-width:14ch}
+  .day{flex-direction:column}
+  .blk{flex:none;flex-direction:row;align-items:baseline;gap:16px;min-height:0;padding:12px 14px}
+  .blk .t{min-width:44px}
+  .two,.about,.recog{grid-template-columns:1fr}
+  .job{grid-template-columns:1fr}
+  .dgrid{grid-template-columns:1fr}
+  .top nav a{padding:8px 9px;font-size:.92rem}
+  .lb-stage{grid-template-columns:1fr;grid-template-rows:1fr auto}
+  .lb-stage .nav{display:none}
+}
+@media (max-width:560px){
+  .top .wrap{gap:8px}
+  .brand{font-size:.98rem;white-space:nowrap}
+  .top nav{flex-wrap:nowrap;gap:0}
+  .top nav a{padding:8px 5px;font-size:.86rem}
+  .cals{grid-template-columns:1fr}
+  .sheet{grid-template-columns:repeat(3,1fr)}
+  .docs{grid-template-columns:1fr}
+  .facts div{grid-template-columns:1fr;gap:2px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Gee Ordoño</a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Hi, I’m Gee.<br>I keep operations moving and data in order.</h1>
+        <p class="lede">I’m an executive assistant and transaction coordinator in commercial real estate. Before that, I was a data analyst working with Elasticsearch, Kibana and SQL. I’m based in San Juan City, Philippines, and I’m used to working US Eastern hours.</p>
+        <div class="cta">
+          <a class="btn" href="#work">See my work</a>
+          <a class="btn ghost" href="mailto:gee.ordono@gmail.com">Email me</a>
+        </div>
+      </div>
+      <figure class="portrait"><img src="assets/images/gee.jpg" alt="Portrait of Gee Ordoño in a black blazer" width="914" height="1000"></figure>
+    </div>
+  </div>
+
+  <div class="day-wrap">
+    <div class="wrap">
+      <div class="day-head">
+        <h2>A weekday, from my calendar</h2>
+        <p>US Eastern time. <a href="#calendar">See the real calendars</a></p>
+      </div>
+      <ol class="day" id="day">
+<li class="blk huddle" style="--span:1;--i:0"><span class="t">8:00</span><span class="n">Daily huddle with the CEO</span></li>
+<li class="blk work" style="--span:1;--i:1"><span class="t">9:00</span><span class="n">Inbound sheet and ad hoc tasks</span></li>
+<li class="blk work" style="--span:1;--i:2"><span class="t">10:00</span><span class="n">Owner’s report</span></li>
+<li class="blk work" style="--span:1;--i:3"><span class="t">11:00</span><span class="n">Skip tracing for leads</span></li>
+<li class="blk rest" style="--span:1.5;--i:4"><span class="t">12:00</span><span class="n">Lunch and break</span></li>
+<li class="blk work" style="--span:1;--i:5"><span class="t">1:30</span><span class="n">Social media</span></li>
+<li class="blk work" style="--span:1;--i:6"><span class="t">2:30</span><span class="n">Email blast and template</span></li>
+<li class="blk work" style="--span:1;--i:7"><span class="t">3:30</span><span class="n">Lead update in the CRM</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <section class="alt" id="do">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>What I do</h2>
+        <p>Two kinds of work that share the same habits: checking details, meeting deadlines and keeping records clean.</p>
+      </div>
+      <div class="two">
+        <div class="panel ops">
+          <h3>Operations and executive support</h3>
+          <p class="sub">Commercial real estate, from the CEO’s inbox to the closing table.</p>
+          <ul>
+            <li>Transaction coordination and contract management, from contract to closing</li>
+            <li>Listing management, including MLS entry and brochures</li>
+            <li>CRM and database administration, lead generation and client follow-up</li>
+            <li>Calendar, inbox and project coordination at CEO level</li>
+            <li>Market analysis and reporting for owners and clients</li>
+            <li>Website, social media and digital marketing campaigns</li>
+          </ul>
+        </div>
+        <div class="panel dat">
+          <h3>Data analysis and quality</h3>
+          <p class="sub">Dashboards, pipelines and the checks that keep them trustworthy.</p>
+          <ul>
+            <li>Data analysis and business intelligence</li>
+            <li>Dashboards and data visualization</li>
+            <li>ETL processes and data pipeline management</li>
+            <li>SQL and query optimization</li>
+            <li>Elasticsearch, Kibana monitoring and Hadoop data processing</li>
+            <li>Data bootstrapping, reingestion and integrity checks</li>
+            <li>Automated data workflows and scripting</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tools"><b>Tools</b>
+        <span>Elasticsearch</span><span>Kibana</span><span>Grafana</span><span>SQL</span><span>Hadoop</span><span>Excel</span><span>Google Sheets</span><span>Google Analytics</span><span>HubSpot</span><span>RealNex</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Selected work</h2>
+        <p>Samples from my time as director of operations at ICM Group and as a data analyst. Select any image to view it larger. Client details have been left out.</p>
+        <div class="filters" role="group" aria-label="Filter work">
+          <button type="button" data-f="all" aria-pressed="true">Everything</button>
+          <button type="button" data-f="ops" aria-pressed="false">Operations</button>
+          <button type="button" data-f="data" aria-pressed="false">Data</button>
+        </div>
+      </div>
+
+      <div class="group" data-kind="data" id="data-work">
+        <div class="ghead">
+          <h3>Dashboards, queries and data checks</h3>
+          <p>Screens from my work as a data analyst. They cover monitoring dashboards, the SQL behind them and checks on ingested data.</p>
+        </div>
+        <div class="dgrid">
+<figure class="doc"><button class="shot " type="button" data-gallery="data" data-cap="Cluster health in Grafana. Pod, CPU, memory and disk usage on one screen."><img src="assets/images/dash-grafana.jpg" alt="Grafana dashboard with cluster pod, CPU and memory gauges" width="1108" height="548" decoding="async" loading="lazy"></button><figcaption><strong>Cluster health in Grafana</strong><span>Pod, CPU, memory and disk usage on one screen.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="data" data-cap="Kibana gauges and trend lines. Threshold gauges next to the metrics they summarise."><img src="assets/images/dash-gauges.jpg" alt="Kibana dashboard with three gauges and trend lines" width="1284" height="620" decoding="async" loading="lazy"></button><figcaption><strong>Kibana gauges and trend lines</strong><span>Threshold gauges next to the metrics they summarise.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="data" data-cap="Multi-metric Kibana dashboard. Several metrics tracked over time in one view."><img src="assets/images/dash-kibana.jpg" alt="Kibana dashboard with several metric panels" width="1284" height="620" decoding="async" loading="lazy"></button><figcaption><strong>Multi-metric Kibana dashboard</strong><span>Several metrics tracked over time in one view.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="data" data-cap="Stacked bars and trend lines. Daily volumes broken down by component, with trends underneath."><img src="assets/images/dash-trends.jpg" alt="Kibana stacked bar chart and trend lines" width="1284" height="620" decoding="async" loading="lazy"></button><figcaption><strong>Stacked bars and trend lines</strong><span>Daily volumes broken down by component, with trends underneath.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="data" data-cap="SQL for pulling metrics. Queries that group records by hour, operator and country."><img src="assets/images/data-sql.jpg" alt="Saved SQL queries in a query editor" width="1284" height="620" decoding="async" loading="lazy"></button><figcaption><strong>SQL for pulling metrics</strong><span>Queries that group records by hour, operator and country.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="data" data-cap="Spotting gaps in ingested data. Breaks in the timeline show where data needs to be reingested."><img src="assets/images/data-discover.jpg" alt="Kibana Discover view showing a timeline of ingested records with gaps" width="1284" height="620" decoding="async" loading="lazy"></button><figcaption><strong>Spotting gaps in ingested data</strong><span>Breaks in the timeline show where data needs to be reingested.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="data" data-cap="Building a check in Kibana. A line chart of hourly counts to confirm data arrived."><img src="assets/images/data-lens.jpg" alt="Kibana line chart builder showing hourly counts" width="1300" height="625" decoding="async" loading="lazy"></button><figcaption><strong>Building a check in Kibana</strong><span>A line chart of hourly counts to confirm data arrived.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="data" data-cap="Field and data type mapping. A working sheet of fields and their types, kept in Excel."><img src="assets/images/data-schema.jpg" alt="Excel sheet mapping field names to data types" width="1284" height="674" decoding="async" loading="lazy"></button><figcaption><strong>Field and data type mapping</strong><span>A working sheet of fields and their types, kept in Excel.</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group" data-kind="ops" id="social">
+        <div class="ghead">
+          <h3>Social media</h3>
+          <p>Posts for ICM Group’s channels that I managed: new listings, coming soon and closed deals, seminars in English and Spanish, and holiday greetings.</p>
+        </div>
+        <div class="sheet">
+<button class="shot sq" type="button" data-gallery="social" data-cap="Business for sale: auto repair shop"><img src="assets/images/sm-12253-southwest-112th-st.jpg" alt="Business for sale post: auto repair shop listed at $627,000" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="For lease: modern office"><img src="assets/images/sm-1680-michigan-ave.jpg" alt="For lease post: 1,004 square foot modern office on Michigan Ave" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Just leased: tenant representation"><img src="assets/images/sm-309-23rd-st.jpg" alt="Just leased post: tenant representation at 23rd St" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="For sale: building near Miracle Mile"><img src="assets/images/sm-3138-southwest-22nd-street.jpg" alt="For sale post: building near Miracle Mile, Coral Gables" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Just listed: industrial warehouse"><img src="assets/images/sm-3671-nw-50th-st.jpg" alt="Just listed post: 7,073 square foot industrial warehouse" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="For sale: commercial land"><img src="assets/images/sm-land-commercial.jpg" alt="For sale post: commercial land" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Under contract: restaurant space"><img src="assets/images/sm-restaurant-for-sale.jpg" alt="Under contract post for a restaurant space" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Coming soon: apartment property"><img src="assets/images/sm-coming-soon-1.jpg" alt="Coming soon post for an apartment property" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Coming soon: high-rise property"><img src="assets/images/sm-coming-soon-2.jpg" alt="Coming soon post for a high-rise property" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Partnership announcement"><img src="assets/images/sm-icm-group.jpg" alt="Announcement of a new partnership with a multifamily specialist agent" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Lunch and Learn invitation"><img src="assets/images/sm-lunch-and-learn-september-11-2025.jpg" alt="Lunch and Learn event invitation, September 11" width="556" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Networking event invitation"><img src="assets/images/sm-march-12-2026.jpg" alt="Networking happy hour and lunch and learn invitation, March 12, 2026" width="556" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Spanish seminar post: “Buscas comprar propiedades?”"><img src="assets/images/sm-spanish-marketing-1.jpg" alt="Spanish-language post inviting people to a property seminar" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Spanish seminar post: “Aprender es mejor juntos”"><img src="assets/images/sm-spanish-marketing-2.jpg" alt="Spanish-language post: learning is better together" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Spanish seminar post: Fix &amp; Flips"><img src="assets/images/sm-spanish-marketing-3.jpg" alt="Spanish-language fix and flip real estate seminar post" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Spanish seminar post: free seminar"><img src="assets/images/sm-spanish-marketing-4.jpg" alt="Spanish-language free seminar post" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="New Year greeting"><img src="assets/images/sm-new-year.jpg" alt="Happy New Year 2025 greeting" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Memorial Day greeting"><img src="assets/images/sm-memorial-day.jpg" alt="Memorial Day greeting" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Labor Day greeting"><img src="assets/images/sm-labor-day.jpg" alt="Labor Day greeting" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Halloween greeting"><img src="assets/images/sm-happy-halloween.jpg" alt="Happy Halloween greeting" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Thanksgiving greeting"><img src="assets/images/sm-thanksgiving.jpg" alt="Thanksgiving greeting" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Christmas greeting"><img src="assets/images/sm-christmas.jpg" alt="Merry Christmas greeting" width="720" height="720" decoding="async" loading="lazy"></button>
+<button class="shot sq" type="button" data-gallery="social" data-cap="Holidays greeting"><img src="assets/images/sm-holidays.jpg" alt="Happy Holidays greeting" width="720" height="720" decoding="async" loading="lazy"></button>
+        </div>
+      </div>
+
+      <div class="group" data-kind="ops" id="documents">
+        <div class="ghead">
+          <h3>Brochures and client packets</h3>
+          <p>Listing brochures, a confidential information memorandum, and the buyer and seller packets I helped put together for commercial properties.</p>
+        </div>
+        <div class="docs">
+<figure class="doc"><button class="shot " type="button" data-gallery="brochures" data-cap="Retail building brochure. Cover, executive summary and pro forma for a multi-tenant building."><img src="assets/images/bro-park.jpg" alt="Cover of a retail building brochure for Sanford, Florida" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Retail building brochure</strong><span>Cover, executive summary and pro forma for a multi-tenant building.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="brochures" data-cap="Executive summary page. Offering summary, map and highlights on one page."><img src="assets/images/bro-park-exec.jpg" alt="Executive summary page with offering summary, map and property highlights" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Executive summary page</strong><span>Offering summary, map and highlights on one page.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="brochures" data-cap="Pro forma summary. Income and expenses laid out against market figures."><img src="assets/images/bro-park-proforma.jpg" alt="Pro forma summary page with income and operating expenses" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Pro forma summary</strong><span>Income and expenses laid out against market figures.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="brochures" data-cap="Office condo brochure. Five professional offices offered for sale."><img src="assets/images/bro-175sw.jpg" alt="Cover of a brochure for five professional offices for sale" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Office condo brochure</strong><span>Five professional offices offered for sale.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="brochures" data-cap="Retail space brochure. Two move-in ready and off-market retail spaces."><img src="assets/images/bro-market.jpg" alt="Cover of the Market Square Retail brochure" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Retail space brochure</strong><span>Two move-in ready and off-market retail spaces.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="brochures" data-cap="Confidential information memorandum. A restaurant business opportunity."><img src="assets/images/bro-cim.jpg" alt="Cover of a confidential information memorandum for a restaurant business" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Confidential information memorandum</strong><span>A restaurant business opportunity.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="brochures" data-cap="Buyer, investor and tenant packet. What clients can expect when buying or leasing."><img src="assets/images/pkg-buying.jpg" alt="Cover of the ICM Group buyer, investor and tenant information packet" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Buyer, investor and tenant packet</strong><span>What clients can expect when buying or leasing.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="brochures" data-cap="Seller packet. How the selling process works, start to finish."><img src="assets/images/pkg-selling.jpg" alt="Cover of the ICM Group seller information packet" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Seller packet</strong><span>How the selling process works, start to finish.</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group" data-kind="ops" id="reports">
+        <div class="ghead">
+          <h3>Owner’s reports</h3>
+          <p>Monthly reports for property owners, covering what was done to market each property and how listings performed.</p>
+        </div>
+        <div class="docs">
+<figure class="doc"><button class="shot " type="button" data-gallery="reports" data-cap="Multifamily monthly report. A six-unit property."><img src="assets/images/rep-sunnybrook.jpg" alt="Cover of a monthly report for a six-unit multifamily property" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Multifamily monthly report</strong><span>A six-unit property.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="reports" data-cap="Retail monthly report. A retail unit."><img src="assets/images/rep-14th.jpg" alt="Cover of a monthly report for a retail unit" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Retail monthly report</strong><span>A retail unit.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="reports" data-cap="Office building owner’s report. Two months of activity for an office building."><img src="assets/images/rep-200se.jpg" alt="Cover of an owner’s report for an office building" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Office building owner’s report</strong><span>Two months of activity for an office building.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="reports" data-cap="Marketing timeline. What happens in days 1 to 180 of a listing."><img src="assets/images/rep-timeline.jpg" alt="Marketing timeline page from an owner’s report" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Marketing timeline</strong><span>What happens in days 1 to 180 of a listing.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="reports" data-cap="Listing activity. Views, emails and listing traffic over time."><img src="assets/images/rep-loopnet.jpg" alt="Listing activity report from LoopNet" width="1000" height="773" decoding="async" loading="lazy"></button><figcaption><strong>Listing activity</strong><span>Views, emails and listing traffic over time.</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group" data-kind="ops" id="research">
+        <div class="ghead">
+          <h3>Market research</h3>
+          <p>Market data I gathered and organized for listing research: cap rates, sales and rent trends.</p>
+        </div>
+        <div class="docs">
+<figure class="doc"><button class="shot " type="button" data-gallery="research" data-cap="Market key metrics. Availability, inventory, sales and demand figures."><img src="assets/images/res-analytics.jpg" alt="Search analytics key metrics table" width="990" height="765" decoding="async" loading="lazy"></button><figcaption><strong>Market key metrics</strong><span>Availability, inventory, sales and demand figures.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="research" data-cap="Market cap rate. Cap rate history with a forecast."><img src="assets/images/res-cap.jpg" alt="Line chart of market cap rate over time" width="990" height="765" decoding="async" loading="lazy"></button><figcaption><strong>Market cap rate</strong><span>Cap rate history with a forecast.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="research" data-cap="Cap rate distribution. Where sales have landed by cap rate band."><img src="assets/images/res-capdist.jpg" alt="Bar chart of market cap rate distribution" width="990" height="765" decoding="async" loading="lazy"></button><figcaption><strong>Cap rate distribution</strong><span>Where sales have landed by cap rate band.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="research" data-cap="Cap rate by star rating. Building quality compared over time."><img src="assets/images/res-capstar.jpg" alt="Line chart of cap rate by star rating" width="990" height="765" decoding="async" loading="lazy"></button><figcaption><strong>Cap rate by star rating</strong><span>Building quality compared over time.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="research" data-cap="Sales volume and price. Volume against price per square foot."><img src="assets/images/res-sales.jpg" alt="Chart of sales volume and market sale price per square foot" width="990" height="765" decoding="async" loading="lazy"></button><figcaption><strong>Sales volume and price</strong><span>Volume against price per square foot.</span></figcaption></figure>
+<figure class="doc"><button class="shot " type="button" data-gallery="research" data-cap="Asking rent trend. Market rent against the subject’s asking rent."><img src="assets/images/res-lease.jpg" alt="Chart of market asking rent and asking rent per square foot" width="990" height="765" decoding="async" loading="lazy"></button><figcaption><strong>Asking rent trend</strong><span>Market rent against the subject’s asking rent.</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group" data-kind="ops" id="calendar">
+        <div class="ghead">
+          <h3>Calendar management</h3>
+          <p>Time-blocked weeks that fit daily huddles, listing work, outreach, reporting and social media around each other.</p>
+        </div>
+        <div class="cals">
+<button class="shot cal" type="button" data-gallery="calendar" data-cap="Time-blocked calendar. Week of the 27th"><img src="assets/images/calendar-plotting-1.jpg" alt="Time-blocked work week, week one" width="1000" height="564" decoding="async" loading="lazy"></button>
+<button class="shot cal" type="button" data-gallery="calendar" data-cap="Time-blocked calendar. Week of the 13th"><img src="assets/images/calendar-plotting-2.jpg" alt="Time-blocked work week, week two" width="1000" height="578" decoding="async" loading="lazy"></button>
+<button class="shot cal" type="button" data-gallery="calendar" data-cap="Time-blocked calendar. Week of the 12th"><img src="assets/images/calendar-plotting-3.jpg" alt="Time-blocked work week, week three" width="1000" height="571" decoding="async" loading="lazy"></button>
+<button class="shot cal" type="button" data-gallery="calendar" data-cap="Time-blocked calendar. Week of the 30th"><img src="assets/images/calendar-plotting-4.jpg" alt="Time-blocked work week, week four" width="1000" height="576" decoding="async" loading="lazy"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="about">
+    <div class="wrap about">
+      <div>
+        <h2>About me</h2>
+        <dl class="facts" style="margin-top:28px">
+          <div><dt>Name</dt><dd>Gerald Ordoño, but everyone calls me Gee</dd></div>
+          <div><dt>Based in</dt><dd>San Juan City, Philippines</dd></div>
+          <div><dt>Hours</dt><dd>Experienced working US Eastern hours, fully remote</dd></div>
+          <div><dt>Strengths</dt><dd>Managerial skills, critical thinking, communication, data analysis, digital marketing</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <p>I started in customer service at Capital One, where I handled financial disputes, followed up on fraud transactions and reviewed credit card documents. That work taught me to be careful with details and calm under deadlines.</p>
+        <p>From there I moved into data. As an analyst at Cardinality.io, I built dashboards, managed data pipelines and checked that ingested data was complete and correct.</p>
+        <p>For more than three years I ran operations for a commercial real estate firm. I supported the CEO, coordinated transactions and listings, kept the CRM clean, managed social media and marketing, and put together reports for property owners.</p>
+        <p>I’m open to remote roles in executive support, transaction coordination or data analysis.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head"><h2>Experience</h2></div>
+      <ol class="jobs">
+        <li class="job o">
+          <div class="when">Nov 2022 to Mar 2026</div>
+          <div>
+            <h3>CRE Director of Operations</h3>
+            <p class="org">ICM Group</p>
+            <ul>
+              <li>CEO-level administrative support, including calendar and inbox management</li>
+              <li>Transaction coordination and contract management</li>
+              <li>Listing management, CRM and database administration</li>
+              <li>Market analysis and reporting</li>
+              <li>Website, social media and digital marketing campaign coordination</li>
+              <li>Client care, inbound and outbound calls, and lead generation</li>
+              <li>Process optimization, project coordination and remote team collaboration</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job d">
+          <div class="when">Nov 2021 to Dec 2022</div>
+          <div>
+            <h3>Data Analyst</h3>
+            <p class="org">Cardinality.io (acquired by Elisa Polystar)</p>
+            <ul>
+              <li>Data analysis and business intelligence, turning data into conclusions and solutions for users</li>
+              <li>Dashboards and data visualization</li>
+              <li>ETL processes and data pipeline management</li>
+              <li>SQL and database query optimization</li>
+              <li>Elasticsearch and Kibana monitoring, and Hadoop data processing</li>
+              <li>Data bootstrapping, reingestion, integrity and quality assurance</li>
+              <li>Automated data workflows and scripting</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job">
+          <div class="when">Jan 2020 to Aug 2021</div>
+          <div>
+            <h3>Customer Service Representative</h3>
+            <p class="org">Sitel Philippines (Capital One)</p>
+            <ul>
+              <li>Financial dispute transactions</li>
+              <li>Follow-up on credit card accounts and fraud transactions</li>
+              <li>Transaction review and credit card document review</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+
+      <div class="recog">
+        <div>
+          <h3>Education</h3>
+          <dl>
+            <div><dt>Far Eastern University</dt><dd>BS in Hotel Operations Management, 2018 to 2020. ITHM HRM Society Secretary.</dd></div>
+            <div><dt>Far Eastern University</dt><dd>Senior High School, General Academic Strand, 2016 to 2018. Academic Awardee Graduate.</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3>Certifications</h3>
+          <dl>
+            <div><dt>Google Analytics, 2022</dt><dd><a href="https://skillshop.credential.net/62e480bb-542c-4823-a2a6-8744b6adbd4f" target="_blank" rel="noopener">Google Skillshop credential</a></dd></div>
+            <div><dt>SEO Certification, 2022</dt><dd><a href="https://app.hubspot.com/academy/achievements/p2ty7rpq/en/1/gerald-ordono/seo" target="_blank" rel="noopener">HubSpot Academy credential</a></dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3>Awards and leadership</h3>
+          <dl>
+            <div><dt>2-Time Chairman of Commission</dt><dd>43rd and 44th YMCA National Congress, 2018 to 2019</dd></div>
+            <div><dt>Outstanding Delegate</dt><dd>43rd YMCA National Congress, 2018</dd></div>
+            <div><dt>Front Office Ambassador</dt><dd>Far Eastern University, 2018</dd></div>
+            <div><dt>Academic Awardee Graduate</dt><dd>2018. Also 2nd Honorable Mention Graduate (2016) and Outstanding Student of the Batch (2015).</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Let’s talk about how I can help.</h2>
+      <p class="lede">Tell me what your team needs handled and I’ll get back to you. References are available on request.</p>
+      <div class="row">
+        <a class="btn" href="mailto:gee.ordono@gmail.com">gee.ordono@gmail.com</a>
+        <div class="meta">
+          <a href="tel:+639217212150">+63 921 7212 150</a>
+          <span>San Juan City, Philippines</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Gerald Ordoño</div>
+</footer>
+
+<dialog id="lb" aria-label="Image viewer">
+  <div class="lb">
+    <div class="lb-bar">
+      <p id="lb-cap"></p>
+      <div class="right"><span class="count" id="lb-count"></span><button type="button" id="lb-close">Close</button></div>
+    </div>
+    <div class="lb-stage">
+      <button type="button" class="nav" id="lb-prev" aria-label="Previous image">‹</button>
+      <div class="imgbox"><img id="lb-img" alt=""></div>
+      <button type="button" class="nav" id="lb-next" aria-label="Next image">›</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var day=document.getElementById('day');
+  requestAnimationFrame(function(){requestAnimationFrame(function(){day.classList.add('ready');});});
+
+  // filters
+  var fbtns=document.querySelectorAll('.filters button');
+  var groups=document.querySelectorAll('.group');
+  fbtns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=b.getAttribute('data-f');
+      fbtns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+      groups.forEach(function(g){
+        g.hidden=!(f==='all'||g.getAttribute('data-kind')===f);
+      });
+    });
+  });
+
+  // lightbox
+  var dlg=document.getElementById('lb'),img=document.getElementById('lb-img');
+  var cap=document.getElementById('lb-cap'),cnt=document.getElementById('lb-count');
+  var list=[],idx=0,opener=null;
+  function show(){
+    var b=list[idx],im=b.querySelector('img');
+    img.src=im.src;img.alt=im.alt;cap.textContent=b.getAttribute('data-cap');
+    cnt.textContent=(idx+1)+' of '+list.length;
+  }
+  function open(b){
+    var g=b.getAttribute('data-gallery');
+    list=Array.prototype.slice.call(document.querySelectorAll('.shot[data-gallery="'+g+'"]'));
+    idx=list.indexOf(b);opener=b;show();
+    if(dlg.showModal){dlg.showModal();}else{dlg.setAttribute('open','');}
+  }
+  function step(d){idx=(idx+d+list.length)%list.length;show();}
+  document.querySelectorAll('.shot').forEach(function(b){b.addEventListener('click',function(){open(b);});});
+  document.getElementById('lb-prev').addEventListener('click',function(){step(-1);});
+  document.getElementById('lb-next').addEventListener('click',function(){step(1);});
+  document.getElementById('lb-close').addEventListener('click',function(){dlg.close();});
+  dlg.addEventListener('click',function(e){if(e.target===dlg||e.target.classList.contains('imgbox')||e.target.classList.contains('lb-stage')){dlg.close();}});
+  dlg.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){step(1);}else if(e.key==='ArrowLeft'){step(-1);}
+  });
+  dlg.addEventListener('close',function(){if(opener){opener.focus();}});
+  // swipe on touch
+  var sx=null;
+  dlg.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  dlg.addEventListener('touchend',function(e){
+    if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;
+    if(Math.abs(dx)>50){step(dx<0?1:-1);}
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
